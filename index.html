@@ -1,226 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <!-- 🔥 MOST IMPORTANT: MOBILE FIT FIX -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Elite Tax Calculator | FY 2025-26</title>
 
-  <title>Elite Income Tax Calculator | FY 2025-26</title>
+<style>
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
 
-  <style>
-    *{
-      box-sizing:border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  background:
+    radial-gradient(circle at top, #243b6b, #060814);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
 
-    body{
-      margin:0;
-      padding:0;
-      width:100%;
-      min-height:100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(circle at top, #1b2a4e, #050814);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow-x:hidden;
-    }
+/* GLASS CARD */
+.card{
+  width:100%;
+  max-width:390px;
+  padding:26px;
+  border-radius:22px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.02)
+    );
+  backdrop-filter:blur(18px);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.65),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+}
 
-    .card{
-      width:100%;
-      max-width:380px;
-      background:rgba(15,25,55,0.95);
-      border-radius:18px;
-      padding:22px;
-      box-shadow:0 20px 60px rgba(0,0,0,0.6);
-    }
+/* HEADER */
+h1{
+  margin:0;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:0.4px;
+  text-align:center;
+}
 
-    h2{
-      margin:0 0 4px 0;
-      font-size:20px;
-      color:#ffffff;
-      text-align:center;
-    }
+.sub{
+  text-align:center;
+  font-size:12px;
+  color:#a9b6ff;
+  margin-top:6px;
+  margin-bottom:22px;
+}
 
-    .sub{
-      font-size:12px;
-      color:#9aa6d6;
-      text-align:center;
-      margin-bottom:18px;
-    }
+/* INPUTS */
+label{
+  font-size:12px;
+  color:#c6d0ff;
+  margin-top:14px;
+  display:block;
+}
 
-    label{
-      font-size:12px;
-      color:#b8c3ff;
-      margin-top:12px;
-      display:block;
-    }
+input,select{
+  width:100%;
+  margin-top:6px;
+  padding:15px;
+  font-size:15px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(8,14,40,0.9);
+  color:#fff;
+  outline:none;
+}
 
-    input, select{
-      width:100%;
-      padding:14px;
-      margin-top:6px;
-      font-size:15px;
-      border-radius:12px;
-      border:1px solid #2e3a78;
-      background:#0b1330;
-      color:#ffffff;
-      outline:none;
-    }
+input::placeholder{
+  color:#7783c9;
+}
 
-    input::placeholder{
-      color:#6f7ab8;
-    }
+/* BUTTON */
+button{
+  width:100%;
+  margin-top:22px;
+  padding:16px;
+  border:none;
+  border-radius:16px;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:0.4px;
+  color:#1a1a1a;
+  background:
+    linear-gradient(135deg,#f6dc7a,#cfa93c);
+  box-shadow:
+    0 10px 30px rgba(207,169,60,0.45);
+}
 
-    button{
-      width:100%;
-      margin-top:18px;
-      padding:14px;
-      border:none;
-      border-radius:14px;
-      font-size:16px;
-      font-weight:600;
-      cursor:pointer;
-      background:linear-gradient(135deg,#f5d76e,#cfa93c);
-      color:#1a1a1a;
-    }
+/* RESULT */
+.result{
+  display:none;
+  margin-top:20px;
+  padding:16px;
+  border-radius:16px;
+  background:rgba(10,16,44,0.9);
+  animation:fadeUp .4s ease;
+}
 
-    .result{
-      display:none;
-      margin-top:16px;
-      background:#0a112c;
-      padding:14px;
-      border-radius:12px;
-      font-size:14px;
-      color:#ffffff;
-    }
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(10px);} 
+  to{opacity:1;transform:none;}
+}
 
-    .line{
-      margin:6px 0;
-    }
+.line{
+  font-size:14px;
+  margin:6px 0;
+  color:#e2e6ff;
+}
 
-    .final{
-      margin-top:8px;
-      font-size:16px;
-      font-weight:700;
-      color:#3cff9d;
-    }
+.final{
+  margin-top:10px;
+  font-size:18px;
+  font-weight:800;
+  color:#3cff9d;
+}
 
-    hr{
-      border:none;
-      border-top:1px solid #26306b;
-      margin:10px 0;
-    }
-  </style>
+hr{
+  border:none;
+  border-top:1px solid rgba(255,255,255,0.12);
+  margin:10px 0;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h2>Elite Income Tax Calculator</h2>
-    <div class="sub">New Tax Regime • FY 2025-26</div>
+<div class="card">
+  <h1>Elite Tax Calculator</h1>
+  <div class="sub">New Tax Regime • FY 2025-26</div>
 
-    <label>Annual Income (₹)</label>
-    <input type="text" id="income" placeholder="Eg. 18,50,000" oninput="formatIncome(this)">
+  <label>Annual Income (₹)</label>
+  <input id="income" placeholder="Eg. 18,50,000"
+  oninput="formatIncome(this)">
 
-    <label>Category</label>
-    <select id="type">
-      <option value="salaried">Salaried</option>
-      <option value="nonsalaried">Non-Salaried</option>
-    </select>
+  <label>Category</label>
+  <select id="type">
+    <option value="salaried">Salaried</option>
+    <option value="nonsalaried">Non-Salaried</option>
+  </select>
 
-    <button onclick="calculateTax()">Calculate Elite Tax</button>
+  <button onclick="calculateTax()">Calculate Elite Tax</button>
 
-    <div class="result" id="output"></div>
-  </div>
+  <div class="result" id="output"></div>
+</div>
 
 <script>
-  function formatINR(num){
-    return "₹ " + num.toLocaleString("en-IN");
+function formatINR(n){
+  return "₹ " + n.toLocaleString("en-IN");
+}
+
+function formatIncome(el){
+  let v = el.value.replace(/,/g,"\"").replace(/\D/g,"\\");
+  if(!v){el.value="";return;}
+  el.value = Number(v).toLocaleString("en-IN");
+}
+
+function calculateTax(){
+  const out=document.getElementById("output");
+  out.style.display="block";
+
+  let incomeRaw =
+    Number(document.getElementById("income")
+    .value.replace(/,/g,""));
+
+  if(incomeRaw<=0){
+    out.innerHTML =
+    "<div class='line' style='color:#ff6b6b'>Enter valid income</div>";
+    return;
   }
 
-  function formatIncome(input){
-    let value = input.value.replace(/,/g,'').replace(/\D/g,'');
-    if(value === ""){ input.value=""; return; }
-    input.value = Number(value).toLocaleString("en-IN");
+  let type=document.getElementById("type").value;
+  let income=incomeRaw;
+  let tax=0,rebate=0,ded=0;
+  let h="";
+
+  if(type==="salaried"){\n    ded=75000;\n    income=Math.max(0,income-ded);\n  }\n
+  h+=`<div class='line'>Gross Income: ${formatINR(incomeRaw)}</div>`;
+  if(ded)h+=`<div class='line'>Standard Deduction: -${formatINR(ded)}</div>`;
+  h+=`<div class='line'><b>Taxable Income: ${formatINR(income)}</b></div><hr>`;
+
+  const slabs=[
+    [400000,800000,0.05],
+    [800000,1200000,0.10],
+    [1200000,1600000,0.15],
+    [1600000,2000000,0.20],
+    [2000000,2400000,0.25]
+  ];
+
+  for(let s of slabs){
+    if(income>s[0]){
+      let amt=Math.min(income,s[1])-s[0];
+      tax+=amt*s[2];
+      h+=`<div class='line'>${s[2]*100}% on ${formatINR(amt)} = ${formatINR(amt*s[2])}</div>`;
+    }
   }
 
-  function calculateTax(){
-    let output = document.getElementById("output");
-    output.style.display = "block";
-
-    let rawIncome = document.getElementById("income").value.replace(/,/g,'');
-    let originalIncome = Number(rawIncome);
-    let type = document.getElementById("type").value;
-
-    if(originalIncome <= 0){
-      output.innerHTML = "<div class='line' style='color:#ff6b6b'>Please enter a valid annual income</div>";
-      return;
-    }
-
-    let income = originalIncome;
-    let deduction = 0;
-    let tax = 0;
-    let rebate = 0;
-    let html = "";
-
-    if(type === "salaried"){
-      deduction = 75000;
-      income -= deduction;
-      if(income < 0) income = 0;
-    }
-
-    html += `<div class='line'>Gross Income: ${formatINR(originalIncome)}</div>`;
-    if(deduction){
-      html += `<div class='line'>Standard Deduction: -${formatINR(deduction)}</div>`;
-    }
-    html += `<div class='line'><b>Taxable Income: ${formatINR(income)}</b></div><hr>`;
-
-    if(income > 400000){
-      let slab = Math.min(income,800000) - 400000;
-      tax += slab * 0.05;
-      html += `<div class='line'>5% on ${formatINR(slab)} = ${formatINR(slab*0.05)}</div>`;
-    }
-    if(income > 800000){
-      let slab = Math.min(income,1200000) - 800000;
-      tax += slab * 0.10;
-      html += `<div class='line'>10% on ${formatINR(slab)} = ${formatINR(slab*0.10)}</div>`;
-    }
-    if(income > 1200000){
-      let slab = Math.min(income,1600000) - 1200000;
-      tax += slab * 0.15;
-      html += `<div class='line'>15% on ${formatINR(slab)} = ${formatINR(slab*0.15)}</div>`;
-    }
-    if(income > 1600000){
-      let slab = Math.min(income,2000000) - 1600000;
-      tax += slab * 0.20;
-      html += `<div class='line'>20% on ${formatINR(slab)} = ${formatINR(slab*0.20)}</div>`;
-    }
-    if(income > 2000000){
-      let slab = Math.min(income,2400000) - 2000000;
-      tax += slab * 0.25;
-      html += `<div class='line'>25% on ${formatINR(slab)} = ${formatINR(slab*0.25)}</div>`;
-    }
-    if(income > 2400000){
-      let slab = income - 2400000;
-      tax += slab * 0.30;
-      html += `<div class='line'>30% on ${formatINR(slab)} = ${formatINR(slab*0.30)}</div>`;
-    }
-
-    let limit = (type === "salaried") ? 1275000 : 1200000;
-    if(income <= limit){
-      rebate = tax;
-      tax = 0;
-    }
-
-    html += `<hr>`;
-    html += `<div class='line'>Tax Before Rebate: ${formatINR(tax + rebate)}</div>`;
-    html += `<div class='line'>Rebate u/s 87A: -${formatINR(rebate)}</div>`;
-    html += `<div class='final'>Final Payable Tax: ${formatINR(tax)}</div>`;
-
-    output.innerHTML = html;
+  if(income>2400000){
+    let amt=income-2400000;
+    tax+=amt*0.30;
+    h+=`<div class='line'>30% on ${formatINR(amt)} = ${formatINR(amt*0.30)}</div>`;
   }
+
+  let limit=(type==="salaried")?1275000:1200000;
+  if(income<=limit){rebate=tax;tax=0;}
+
+  h+=`<hr>`+
+  `<div class='line'>Tax Before Rebate: ${formatINR(tax+rebate)}</div>`+
+  `<div class='line'>Rebate u/s 87A: -${formatINR(rebate)}</div>`+
+  `<div class='final'>Final Payable Tax: ${formatINR(tax)}</div>`;
+
+  out.innerHTML=h;
+}
 </script>
 
 </body>
